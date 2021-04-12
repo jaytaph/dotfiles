@@ -1,0 +1,46 @@
+[user]
+        name = Joshua Thijssen
+        email = jthijssen@noxlogic.nl
+        signingkey = FABA426A
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+[alias]
+        st = status
+        ci = commit
+        co = checkout
+        br = branch
+        lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white) %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+        lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white) %an%C(reset)' --abbrev-commit
+        lg = !"git lg1"
+        wdiff = diff
+
+[diff]
+        tool = diffmerge
+[difftool "diffmerge"]
+        cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+        tool = diffmerge
+[mergetool "diffmerge"]
+        cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+        trustExitCode = true
+
+[pager]
+       diff = diff-highlight | less -X
+       log = diff-highlight | less -X
+       show = diff-highlight | less -X
+[core]
+        excludesfile = ~/.gitignore
+        editor = /usr/bin/vim
+[commit]
+        gpgsign = true
+[push]
+        default = current
+[gpg]
+        program = /usr/bin/gpg
+        
+[oh-my-zsh]
+        hide-status = 1
+        hide-dirty = 1
